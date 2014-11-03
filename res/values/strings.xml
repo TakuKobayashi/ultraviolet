@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ultraviolet</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="today_UV">今日のUVインデックス</string>
+    <string name="tommorow_UV">明日の予想</string>
+    <string name="loadding">計測中</string>
+    <string name="grathButtonText">この地点の過去推移を見る</string>
+
+</resources>
