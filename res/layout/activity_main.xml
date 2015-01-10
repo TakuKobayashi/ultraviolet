@@ -15,8 +15,9 @@
     <RelativeLayout
         android:id="@+id/UVInfoLayout"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp">
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        >
 
         <TextView
             android:id="@+id/TodayUVText"

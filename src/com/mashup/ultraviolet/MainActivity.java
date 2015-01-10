@@ -31,11 +31,12 @@ public class MainActivity extends Activity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     requestWindowFeature(Window.FEATURE_NO_TITLE);
-    setContentView(R.layout.activity_main);
+    setContentView(ExtraLayout.getParenetView(this, R.layout.activity_main));
     ImageView bg = (ImageView) findViewById(R.id.SkyBg);
-    bg.setImageResource(R.drawable.sky_bg);
+    ExtraLayout.setBaseImageView(this, bg, R.drawable.sky_bg);
 
     _tipsLayout = (RelativeLayout) findViewById(R.id.UVInfoLayout);
+    _tipsLayout.getLayoutParams().width = bg.getLayoutParams().width;
     _todayValText = (TextView) findViewById(R.id.TodayValText);
     _todayValText.setText(R.string.loadding);
     _tomorrowValText = (TextView) findViewById(R.id.TommorowValText);
