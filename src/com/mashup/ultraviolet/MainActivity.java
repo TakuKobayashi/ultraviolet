@@ -4,6 +4,8 @@ import org.apache.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.mashup.ultraviolet.HttpRequestTask.RequestFinishCallback;
 
 import android.app.Activity;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
   private TextView _todayValText;
   private TextView _tomorrowValText;
   private LocationManager _locationManager;
+  private AdView _adView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,10 @@ public class MainActivity extends Activity {
     _tomorrowValText = (TextView) findViewById(R.id.TommorowValText);
     _tomorrowValText.setText(R.string.loadding);
     _locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+    _adView = (AdView) this.findViewById(R.id.adView);
+    AdRequest adRequest = new AdRequest.Builder().build();
+    _adView.loadAd(adRequest);
   }
 
   private void httpLocationsRequest(double lat, double lon){
@@ -101,12 +108,14 @@ public class MainActivity extends Activity {
     }
     _locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 5000, _locationListener); // 位置情報リスナー
     _locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 5000, _locationListener); // 位置情報リスナー
+    _adView.resume();
   }
 
   @Override
   protected void onPause() {
     super.onPause();
     _locationManager.removeUpdates(_locationListener);
+    _adView.pause();
   }
 
   private LocationListener _locationListener = new LocationListener() {
@@ -132,5 +141,6 @@ public class MainActivity extends Activity {
   protected void onDestroy() {
     super.onDestroy();
     ApplicationHelper.releaseImageView((ImageView) findViewById(R.id.SkyBg));
+    _adView.destroy();
   }
 }
