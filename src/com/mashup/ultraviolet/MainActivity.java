@@ -69,9 +69,9 @@ public class MainActivity extends Activity {
       Bundle params = new Bundle();
       params.putDouble("lat", lat);
       params.putDouble("lon", lon);
-      request.execute("http://mashup.cloudapp.net/api/environment/ulterviolet?"+ApplicationHelper.makeUrlParams(params));
+      request.execute("http://taptappun.cloudapp.net/api/environment/ulterviolet?"+ApplicationHelper.makeUrlParams(params));
   }
-  
+
   private int valToColor(double val){
     if(val >= 11){
       return Color.argb(192, 255, 153, 255);
